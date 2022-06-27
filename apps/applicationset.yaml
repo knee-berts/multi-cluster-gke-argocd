@@ -8,12 +8,15 @@ spec:
       selector:
         matchLabels:
           region: "us-east1"
+  template:
+    metadata:
+      name: '{{name}}-guestbook'
     spec:
       project: "default"
       source:
-        repoURL: https://github.com/knee-berts/multi-cluster-gke-argocd.git
+        repoURL: https://github.com/knee-berts/multi-cluster-gke-argocd/
         targetRevision: HEAD
-        path: apps
+        path: apps/guestbook
       destination:
         server: '{{server}}' # 'server' field of the secret
         namespace: guestbook
