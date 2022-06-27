@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: guestbook
+spec:
+  generators:
+  - clusters:
+      selector:
+        matchLabels:
+          region: "us-east1"
+    spec:
+      project: "default"
+      source:
+        repoURL: knee-berts/multi-cluster-gke-argocd
+        targetRevision: HEAD
+        path: apps
+      destination:
+        server: '{{server}}' # 'server' field of the secret
+        namespace: guestbook
