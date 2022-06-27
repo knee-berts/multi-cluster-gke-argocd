@@ -11,7 +11,7 @@ spec:
     spec:
       project: "default"
       source:
-        repoURL: knee-berts/multi-cluster-gke-argocd
+        repoURL: https://github.com/knee-berts/multi-cluster-gke-argocd
         targetRevision: HEAD
         path: apps
       destination:
