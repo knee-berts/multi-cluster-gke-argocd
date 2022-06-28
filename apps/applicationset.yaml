@@ -4,11 +4,10 @@ metadata:
   name: guestbook
 spec:
   generators:
-  - clusters: {}
-  # - clusters:
-  #     selector:
-  #       matchLabels:
-  #         region: "us-east1"
+  - clusters:
+      selector:
+        matchLabels:
+          region: "us-east1"
   template:
     metadata:
       name: '{{name}}-guestbook'
