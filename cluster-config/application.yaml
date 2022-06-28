@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: k8s-config
+  name: clusters-config
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -14,10 +14,7 @@ spec:
     repoURL: https://github.com/knee-berts/multi-cluster-gke-argocd/
     targetRevision: HEAD
     path: cluster-config/prod
-    syncPolicy:
-      automated:
-        prune: true
-        selfHeal: true
-        allowEmpty: true
-      syncOptions:
-        - CreateNamespace=true
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
