@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: prod-cluster-config
+spec:
+  generators:
+  - clusters:
+      selector:
+        matchLabels:
+          env: "prod"
+  template:
+    metadata:
+      name: '{{name}}-cluster-config'
+    spec:
+      project: "default"
+      source:
+        repoURL: https://github.com/knee-berts/multi-cluster-gke-argocd/
+        targetRevision: HEAD
+        path: cluster-config/prod
+      destination:
+        server: '{{server}}' # 'server' field of the secret
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          allowEmpty: true
