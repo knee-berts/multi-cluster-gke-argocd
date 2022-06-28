@@ -1,0 +1,9 @@
+{
+    "cloudcode.kubeconfigs": [
+        {
+            "name": "argo",
+            "configPath": "/Users/nickeberts/projects/argo-spike/config"
+        }
+    ],
+    "cloudcode.active-kubeconfig": "argo"
+}
