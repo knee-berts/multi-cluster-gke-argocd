@@ -21,10 +21,6 @@ spec:
       destination:
         server: '{{server}}' # 'server' field of the secret
         namespace: guestbook
-syncPolicy:
-  automated:
-    prune: true
-    selfHeal: true
-    allowEmpty: true
-  syncOptions:
-    - CreateNamespace=true
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
