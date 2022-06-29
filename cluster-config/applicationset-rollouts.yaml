@@ -10,7 +10,7 @@ spec:
           env: "prod"
   template:
     metadata:
-      name: '{{name}}-cluster-config'
+      name: '{{name}}-argo-rollouts'
     spec:
       project: "default"
       source:
