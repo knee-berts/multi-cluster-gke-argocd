@@ -5,6 +5,7 @@ apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
   name: istio-ingressgateway
+  namespace: asm-gateways
 spec:
   maxUnavailable: 1
   selector:
