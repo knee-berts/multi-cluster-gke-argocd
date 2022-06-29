@@ -15,7 +15,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: asm-ingressgateway
-  namespace: asm-ingress
+  namespace: asm-gateways
   annotations:
     cloud.google.com/neg: '{"ingress": true}'
     cloud.google.com/backend-config: '{"default": "ingress-backendconfig"}'
