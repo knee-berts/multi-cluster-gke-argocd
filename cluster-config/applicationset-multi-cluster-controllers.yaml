@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: mcc-root
+spec:
+  generators:
+  - clusters:
+      selector:
+        matchLabels:
+          env: "multi-cluster-controller"
+  template:
+    metadata:
+      name: '{{name}}-mcc-config'
+    spec:
+      project: "default"
+      source:
+        repoURL: https://github.com/knee-berts/multi-cluster-gke-argocd/
+        targetRevision: HEAD
+        path: cluster-config/multi-cluster-controllers
+      destination:
+        server: '{{server}}' # 'server' field of the secret
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          allowEmpty: true

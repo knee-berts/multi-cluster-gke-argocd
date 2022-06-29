@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: prod-cluster-config
+  name: asm-root
 spec:
   generators:
   - clusters:
@@ -10,13 +10,13 @@ spec:
           env: "prod"
   template:
     metadata:
-      name: '{{name}}-cluster-config'
+      name: '{{name}}-asm-config'
     spec:
       project: "default"
       source:
         repoURL: https://github.com/knee-berts/multi-cluster-gke-argocd/
         targetRevision: HEAD
-        path: cluster-config/prod
+        path: cluster-config/asm
       destination:
         server: '{{server}}' # 'server' field of the secret
       syncPolicy:
