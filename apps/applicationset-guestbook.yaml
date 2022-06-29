@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: bookinfo
+  generators:
+  - clusters:
+      selector:
+        matchLabels:
+          region: "us-east1"
+  template:
+    metadata:
+      name: '{{name}}-bookinfo'
+    spec:
+      project: "default"
+      source:
+        repoURL: https://github.com/knee-berts/multi-cluster-gke-argocd/
+        targetRevision: HEAD
+        path: apps/bookinfo
+      destination:
+        server: '{{server}}' # 'server' field of the secret
+        namespace: bookinfo
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          allowEmpty: true
+        syncOptions:
+          - CreateNamespace=true
