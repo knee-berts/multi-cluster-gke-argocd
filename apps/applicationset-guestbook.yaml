@@ -1,7 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: bookinfo
+  name: guestbook
+spec:
   generators:
   - clusters:
       selector:
@@ -9,16 +10,16 @@ metadata:
           region: "us-east1"
   template:
     metadata:
-      name: '{{name}}-bookinfo'
+      name: '{{name}}-guestbook'
     spec:
       project: "default"
       source:
         repoURL: https://github.com/knee-berts/multi-cluster-gke-argocd/
         targetRevision: HEAD
-        path: apps/bookinfo
+        path: apps/guestbook
       destination:
         server: '{{server}}' # 'server' field of the secret
-        namespace: bookinfo
+        namespace: guestbook
       syncPolicy:
         automated:
           prune: true
