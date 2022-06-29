@@ -37,3 +37,9 @@ spec:
   selector:
     asm: ingressgateway
   type: ClusterIP
+---
+kind: ServiceExport
+apiVersion: net.gke.io/v1
+metadata:
+  name: ingressgateway
+  namespace: asm-gateways
