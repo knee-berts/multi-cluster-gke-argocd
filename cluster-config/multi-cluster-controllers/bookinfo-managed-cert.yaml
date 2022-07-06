@@ -1,8 +1,0 @@
-apiVersion: networking.gke.io/v1beta2
-kind: ManagedCertificate
-metadata:
-  name: frontend-managed-cert
-  namespace: istio-system
-spec:
-  domains:
-  - "frontend.endpoints.argo-sp.cloud.goog"
