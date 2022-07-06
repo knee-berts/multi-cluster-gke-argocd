@@ -11,4 +11,4 @@ spec:
     spec:
       backend:
         serviceName: asm-ingressgateway-xlb-multicluster-svc
-        servicePort: 80
+        servicePort: 443

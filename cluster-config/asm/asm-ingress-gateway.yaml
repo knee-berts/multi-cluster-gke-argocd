@@ -8,11 +8,11 @@ spec:
     asm: ingressgateway-xlb # use ASM external ingress gateway
   servers:
   - port:
-      number: 80
-      name: http
-      protocol: HTTP
+      number: 443
+      name: https
+      protocol: HTTPS
     hosts:
     - '*' # IMPORTANT: Must use wildcard here when using SSL, see note below
-    # tls:
-    #   mode: SIMPLE
-    #   credentialName: edge2mesh-credential
+    tls:
+      mode: SIMPLE
+      credentialName: edge2mesh-credential
