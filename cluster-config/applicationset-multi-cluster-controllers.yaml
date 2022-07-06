@@ -24,4 +24,3 @@ spec:
           prune: true
           selfHeal: true
           allowEmpty: true
-        preserveResourcesOnDeletion: true
