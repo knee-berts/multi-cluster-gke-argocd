@@ -1,14 +1,14 @@
-apiVersion: networking.gke.io/v1beta1
-kind: MultiClusterIngress
-metadata:
-  name: asm-ingressgateway-xlb-multicluster-ingress
-  namespace: asm-gateways
-  annotations:
-    networking.gke.io/static-ip: "34.120.90.166"
-    networking.gke.io/pre-shared-certs: "mcrt-c1aa1e46-6581-420b-be39-f1fde1a2ab41"
-spec:
-  template:
-    spec:
-      backend:
-        serviceName: asm-ingressgateway-xlb-multicluster-svc
-        servicePort: 443
+# apiVersion: networking.gke.io/v1beta1
+# kind: MultiClusterIngress
+# metadata:
+#   name: asm-ingressgateway-xlb-multicluster-ingress
+#   namespace: asm-gateways
+#   annotations:
+#     networking.gke.io/static-ip: "34.120.90.166"
+#     networking.gke.io/pre-shared-certs: "mcrt-c1aa1e46-6581-420b-be39-f1fde1a2ab41"
+# spec:
+#   template:
+#     spec:
+#       backend:
+#         serviceName: asm-ingressgateway-xlb-multicluster-svc
+#         servicePort: 443
