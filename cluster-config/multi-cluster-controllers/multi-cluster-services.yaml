@@ -10,7 +10,7 @@ spec:
   template:
     spec:
       selector:
-        istio: ingressgateway-xlb
+        istio: ingressgateway
       ports:
       - name: http2
         protocol: TCP
