@@ -7,7 +7,7 @@ spec:
   - clusters:
       selector:
         matchLabels:
-          region: "us-east1"
+          env: "prod"
   template:
     metadata:
       name: '{{name}}-bookinfo'
