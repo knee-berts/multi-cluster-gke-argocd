@@ -4,5 +4,3 @@ metadata:
   name: asm-gateways
   labels:
     istio.io/rev: asm-managed
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1"
