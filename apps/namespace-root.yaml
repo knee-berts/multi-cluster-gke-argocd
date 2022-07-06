@@ -1,18 +1,26 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
-  name: namespace-root
+  name: app-namespaces
 spec:
-  destination:
-    name: ''
-    namespace: argocd
-    server: 'https://kubernetes.default.svc'
-  source:
-    path: apps/namespaces
-    repoURL: 'https://github.com/knee-berts/multi-cluster-gke-argocd'
-    targetRevision: HEAD
-  project: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+  generators:
+  - clusters:
+      selector:
+        matchLabels:
+          env: "prod"
+  template:
+    metadata:
+      name: '{{name}}-app-namespaces'
+    spec:
+      project: "default"
+      source:
+        repoURL: https://github.com/knee-berts/multi-cluster-gke-argocd/
+        targetRevision: HEAD
+        path: apps/namespaces
+      destination:
+        server: '{{server}}' # 'server' field of the secret
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          allowEmpty: true
