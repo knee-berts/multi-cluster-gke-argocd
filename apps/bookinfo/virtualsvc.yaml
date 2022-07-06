@@ -4,9 +4,9 @@ metadata:
   name: rollouts-demo-vsvc1
 spec:
   gateways:
-  - rollouts-demo-gateway
+  - asm-gateways/asm-ingress-gateway-xlb
   hosts:
-  - rollouts-demo-vsvc1.local
+  - frontend.endpoints.argo-sp.cloud.goog
   http:
   - name: primary
     route:
