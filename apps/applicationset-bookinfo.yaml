@@ -27,3 +27,9 @@ spec:
           allowEmpty: true
         syncOptions:
           - CreateNamespace=true
+          - ApplyOutOfSyncOnly=true
+        ignoreDifferences:
+        - group: networking.istio.io
+          kind: VirtualService
+          jsonPointers:
+          - /spec/http/0
