@@ -19,7 +19,8 @@ spec:
           #   - secondary # At least one route is required
       steps:
       - setWeight: 5
-      - pause: {}
+      - pause:
+          duration: 15s
   revisionHistoryLimit: 2
   selector:
     matchLabels:
