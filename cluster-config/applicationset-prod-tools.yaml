@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: prod-tools-root
+spec:
+  generators:
+  - clusters:
+      selector:
+        matchLabels:
+          env: "prod"
+  template:
+    metadata:
+      name: '{{name}}-prod-tools'
+    spec:
+      project: "default"
+      source:
+        repoURL: https://github.com/knee-berts/multi-cluster-gke-argocd/
+        targetRevision: HEAD
+        path: cluster-config/argo-rollouts
+      destination:
+        server: '{{server}}' # 'server' field of the secret
+        namespace: prod-tools
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          allowEmpty: true
+        syncOptions:
+          - CreateNamespace=true
