@@ -18,27 +18,9 @@ spec:
           #   routes:
           #   - secondary # At least one route is required
       steps:
-      - setWeight: 5
+      - setWeight: 20
       - pause:
-          duration: 2m
-      - analysis:
-          templates:
-          - templateName: success-rate
-          args:
-          - name: service-name
-            value: rollouts-demo-canary.bookinfo.svc.cluster.local
-      - setWeight: 30
-      - pause:
-          duration: 2m
-      - analysis:
-          templates:
-          - templateName: success-rate
-          args:
-          - name: service-name
-            value: rollouts-demo-canary.bookinfo.svc.cluster.local
-      - setWeight: 60
-      - pause:
-          duration: 2m
+          duration: 4m
       - analysis:
           templates:
           - templateName: success-rate
@@ -47,7 +29,7 @@ spec:
             value: rollouts-demo-canary.bookinfo.svc.cluster.local
       - setWeight: 80
       - pause:
-          duration: 2m
+          duration: 4m
       - analysis:
           templates:
           - templateName: success-rate
@@ -66,7 +48,7 @@ spec:
     spec:
       containers:
       - name: rollouts-demo
-        image: argoproj/rollouts-demo:green
+        image: argoproj/rollouts-demo:blue
         ports:
         - name: http
           containerPort: 8080
