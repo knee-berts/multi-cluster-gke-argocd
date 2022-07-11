@@ -27,6 +27,7 @@ spec:
           allowEmpty: true
         syncOptions:
           - ApplyOutOfSyncOnly=true
+          - CreateNamespace=true
       ignoreDifferences:
       - group: networking.istio.io
         kind: VirtualService
