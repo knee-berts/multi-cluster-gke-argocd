@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: guestbook
+spec:
+  generators:
+  - clusters:
+      selector:
+        matchLabels:
+          region: "us-east1"
+  template:
+    metadata:
+      name: '{{name}}-guestbook'
+    spec:
+      project: "default"
+      source:
+        repoURL: https://github.com/knee-berts/multi-cluster-gke-argocd/
+        targetRevision: HEAD
+        path: teams/team-2
+      destination:
+        server: '{{server}}' # 'server' field of the secret
+        namespace: guestbook
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          allowEmpty: true

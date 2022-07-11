@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: application-root
+  name: team-1-root
 spec:
   destination:
     name: ''
     namespace: argocd
     server: 'https://kubernetes.default.svc'
   source:
-    path: apps
+    path: teams/team-1
     repoURL: 'https://github.com/knee-berts/multi-cluster-gke-argocd'
     targetRevision: HEAD
   project: default
