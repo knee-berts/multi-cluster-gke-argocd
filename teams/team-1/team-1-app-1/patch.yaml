@@ -14,47 +14,17 @@ spec:
   gateways:
   - asm-gateways/asm-ingress-gateway-xlb
   hosts:
-  - hostname # example frontend.endpoints.argo-sp.cloud.goog
+  - hostname.local # example frontend.endpoints.argo-sp.cloud.goog
   http:
   - name: primary
     route:
     - destination:
         host: team-1-app-1-stable
+        port:
+          number: 80
+      weight: 100
     - destination:
         host: team-1-app-1-canary
----
-apiVersion: argoproj.io/v1alpha1
-kind: Rollout
-metadata:
-  name: rollout-name
-spec:
-  replicas: 1
-  strategy:
-    canary:
-      canaryService: rollout-name-canary
-      stableService: rollout-name-stable
-      trafficRouting:
-        istio:
-          virtualServices:
-          - name: virtualservice-name # At least one virtualService is required
-            routes:
-            - primary # At least one route is required
-          # - name: rollouts-demo-vsvc2
-          #   routes:
-          #   - secondary # At least one route is required
-      steps:
-      - analysis:
-          args:
-          - name: service-name
-            value: team-1-app-1-canary.team-1-app-1.svc.cluster.local
-  selector:
-    matchLabels:
-      app: team-1-app-1
-  template:
-    metadata:
-      labels:
-        app: team-1-app-1
-    spec:
-      containers:
-      - name: team-1-app-1
-        image:  gcr.io/google-samples/whereami:v1.2.6
+        port:
+          number: 80
+      weight: 0

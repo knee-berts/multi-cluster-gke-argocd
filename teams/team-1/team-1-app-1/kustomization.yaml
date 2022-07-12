@@ -5,6 +5,7 @@ namePrefix: team-1-app-1-
 resources:
 - ../../../app-template/base/
 - namespace.yaml
+- rollout.yaml
 commonLabels:
   app: team-1-app-1
 patches:
