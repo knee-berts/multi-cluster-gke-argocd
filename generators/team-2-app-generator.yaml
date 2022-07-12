@@ -1,0 +1,42 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: team-2-app-generator
+spec:
+  generators:
+    - matrix:
+        generators:
+          - git:
+              repoURL: https://github.com/knee-berts/multi-cluster-gke-argocd/
+              revision: HEAD
+              directories:
+                - path: teams/team-2/*
+          - clusters:
+              selector:
+                matchLabels:
+                  env: "prod"
+  template:
+    metadata:
+      name: '{{name}}-{{path.basename}}'
+    spec:
+      project: "team-2"
+      source:
+        repoURL: https://github.com/knee-berts/multi-cluster-gke-argocd/
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: '{{server}}' # 'server' field of the secret
+        namespace: '{{path.basename}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          allowEmpty: true
+        syncOptions:
+          - CreateNamespace=true
+          - ApplyOutOfSyncOnly=true
+      ignoreDifferences:
+      - group: networking.istio.io
+        kind: VirtualService
+        jsonPointers:
+        - /spec/http/0

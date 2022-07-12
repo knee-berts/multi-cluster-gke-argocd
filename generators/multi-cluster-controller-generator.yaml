@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: team-1-app-generator
+  name: mcc-clusters-config-generator
 spec:
   generators:
     - matrix:
@@ -10,33 +10,24 @@ spec:
               repoURL: https://github.com/knee-berts/multi-cluster-gke-argocd/
               revision: HEAD
               directories:
-              - path: teams/team-1/*
+                - path: multi-cluster-controllers/*
           - clusters:
               selector:
                 matchLabels:
-                  region: "us-east1"
+                  env: "multi-cluster-controller"
   template:
     metadata:
-      name: '{{name}}-{{path[1]}}'
+      name: '{{name}}-{{path.basename}}'
     spec:
-      project: "team-1"
+      project: "admin"
       source:
         repoURL: https://github.com/knee-berts/multi-cluster-gke-argocd/
         targetRevision: HEAD
         path: '{{path}}'
       destination:
         server: '{{server}}' # 'server' field of the secret
-        namespace: '{{path.basename}}'
       syncPolicy:
         automated:
           prune: true
           selfHeal: true
           allowEmpty: true
-        syncOptions:
-          - CreateNamespace=true
-          - ApplyOutOfSyncOnly=true
-      ignoreDifferences:
-      - group: networking.istio.io
-        kind: VirtualService
-        jsonPointers:
-        - /spec/http/0

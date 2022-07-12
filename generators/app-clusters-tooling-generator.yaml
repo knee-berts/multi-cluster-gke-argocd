@@ -1,23 +1,23 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: app-clusters-config
+  name: app-clusters-config-generator
 spec:
   generators:
   - matrix:
-    generators:
-      - git:
-        repoURL:
-        revision: HEAD
-        directories:
-          - path: app-clusters-config/*
-      - clusters:
-          selector:
-            matchLabels:
-              env: "prod"
+      generators:
+        - git:
+            repoURL: https://github.com/knee-berts/multi-cluster-gke-argocd/
+            revision: HEAD
+            directories:
+              - path: app-clusters-config/*
+        - clusters:
+            selector:
+              matchLabels:
+                env: "prod"
   template:
     metadata:
-      name: '{{name}}-{{path[0]}}'
+      name: '{{name}}-{{path.basename}}'
     spec:
       project: "admin"
       source:
