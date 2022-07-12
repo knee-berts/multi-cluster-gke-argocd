@@ -24,6 +24,7 @@ spec:
       - analysis:
           templates:
           - templateName: success-rate
+            clusterScope: true
           args:
           - name: service-name
             value: rollouts-demo-canary.bookinfo.svc.cluster.local
@@ -33,6 +34,7 @@ spec:
       - analysis:
           templates:
           - templateName: success-rate
+            clusterScope: true
           args:
           - name: service-name
             value: rollouts-demo-canary.bookinfo.svc.cluster.local
