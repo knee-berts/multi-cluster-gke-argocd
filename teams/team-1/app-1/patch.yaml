@@ -19,12 +19,12 @@ spec:
   - name: primary
     route:
     - destination:
-        host: team-1-app-1-stable
+        host: app-1-stable
         port:
           number: 80
       weight: 100
     - destination:
-        host: team-1-app-1-canary
+        host: app-1-canary
         port:
           number: 80
       weight: 0
