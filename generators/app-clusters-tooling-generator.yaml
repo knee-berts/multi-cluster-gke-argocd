@@ -34,3 +34,4 @@ spec:
           allowEmpty: true
         syncOptions:
           - CreateNamespace=true
+          - Validate=false
