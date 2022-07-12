@@ -5,7 +5,7 @@ metadata:
   namespace: asm-gateways
   annotations:
     networking.gke.io/static-ip: "34.120.90.166"
-    networking.gke.io/pre-shared-certs: "mcrt-c1aa1e46-6581-420b-be39-f1fde1a2ab41"
+    networking.gke.io/pre-shared-certs: "mcrt-a0803a06-3de3-4390-9ee2-60937f084da0"
 spec:
   template:
     spec:
