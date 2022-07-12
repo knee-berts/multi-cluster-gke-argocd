@@ -1,0 +1,45 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: virtualservice
+spec:
+  gateways:
+  - asm-gateways/asm-ingress-gateway-xlb
+  hosts:
+  - hostname # example frontend.endpoints.argo-sp.cloud.goog
+  http:
+  - name: primary
+    route:
+    - destination:
+        host: app-name-stable
+        port:
+          number: 80
+      weight: 100
+    - destination:
+        host: app-name-canary
+        port:
+          number: 80
+      weight: 0
+# ---
+# apiVersion: networking.istio.io/v1alpha3
+# kind: VirtualService
+# metadata:
+#   name: rollouts-demo-vsvc2
+# spec:
+#   gateways:
+#   - rollouts-demo-gateway
+#   hosts:
+#   - rollouts-demo-vsvc2.local
+#   http:
+#   - name: secondary
+#     route:
+#     - destination:
+#         host: rollouts-demo-stable
+#         port:
+#           number: 15373
+#       weight: 100
+#     - destination:
+#         host: rollouts-demo-canary
+#         port:
+#           number: 15373
+#       weight: 0

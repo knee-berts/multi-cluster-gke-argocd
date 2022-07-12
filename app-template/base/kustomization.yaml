@@ -1,0 +1,7 @@
+resources:
+- quota.yaml
+- rbac.yaml
+- rollout.yaml
+- service-canary.yaml
+- service-stable.yaml
+- virtualsvc.yaml
