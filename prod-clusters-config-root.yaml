@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prod-cluster-root
+  name: app-clusters-root
   namespace: argocd
 spec:
   destination:
@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: cluster-config
+    path: app-clusters-config
     repoURL: https://github.com/knee-berts/multi-cluster-gke-argocd
     targetRevision: HEAD
   syncPolicy:
