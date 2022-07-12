@@ -1,25 +1,25 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: team-2-app-generator
+  name: team-1-app-generator
 spec:
   generators:
-  - matrix:
-    generators:
-      - git:
-        repoURL:
-        revision: HEAD
-        directories:
-          - path: teams/team-2/*
-      - clusters:
-          selector:
-            matchLabels:
-              env: "prod"
+    - matrix:
+        generators:
+          - git:
+              repoURL: https://github.com/knee-berts/multi-cluster-gke-argocd/
+              revision: HEAD
+              directories:
+              - path: teams/team-1/*
+          - clusters:
+              selector:
+                matchLabels:
+                  region: "us-east1"
   template:
     metadata:
-      name: '{{name}}-{{path[0]}}'
+      name: '{{name}}-{{path[1]}}'
     spec:
-      project: "team-2"
+      project: "team-1"
       source:
         repoURL: https://github.com/knee-berts/multi-cluster-gke-argocd/
         targetRevision: HEAD
