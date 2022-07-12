@@ -11,7 +11,7 @@ spec:
       trafficRouting:
         istio:
           virtualServices:
-          - name: virtualservice # At least one virtualService is required
+          - name: team-1-app-1-virtualservice # At least one virtualService is required
             routes:
             - primary # At least one route is required
       steps:
