@@ -14,17 +14,17 @@ spec:
   gateways:
   - asm-gateways/asm-ingress-gateway-xlb
   hosts:
-  - hostname.local # example frontend.endpoints.argo-sp.cloud.goog
+  - whereami.endpoints.argo-sp.cloud.goog
   http:
   - name: primary
     route:
     - destination:
-        host: app-2-stable
+        host: whereami-stable
         port:
           number: 80
       weight: 100
     - destination:
-        host: app-2-canary
+        host: whereami-canary
         port:
           number: 80
       weight: 0
