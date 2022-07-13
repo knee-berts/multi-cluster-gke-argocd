@@ -1,8 +1,8 @@
-apiVersion: networking.gke.io/v1beta2
-kind: ManagedCertificate
-metadata:
-  name: whereami-managed-cert
-  namespace: istio-system
-spec:
-  domains:
-  - "whereami.endpoints.argo-sp.cloud.goog"
+# apiVersion: networking.gke.io/v1beta2
+# kind: ManagedCertificate
+# metadata:
+#   name: whereami-managed-cert
+#   namespace: istio-system
+# spec:
+#   domains:
+#   - "whereami.endpoints.argo-sp.cloud.goog"
