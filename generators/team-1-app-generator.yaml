@@ -35,6 +35,12 @@ spec:
         syncOptions:
           - CreateNamespace=true
           - ApplyOutOfSyncOnly=true
+        retry:
+          limit: 20
+          backoff:
+            duration: 5s
+            factor: 2
+            maxDuration: 5m
       ignoreDifferences:
       - group: networking.istio.io
         kind: VirtualService
