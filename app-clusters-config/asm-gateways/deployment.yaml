@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: asm-ingressgateway-xlb
-  namespace: asm-gateways
+  # namespace: asm-gateways
 spec:
   replicas: 3
   selector:
