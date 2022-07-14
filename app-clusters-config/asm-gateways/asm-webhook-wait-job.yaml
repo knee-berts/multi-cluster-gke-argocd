@@ -20,7 +20,7 @@ spec:
               echo ""
               echo -n "Waiting for the ASM MCP webhook to install."
               sleep $SLEEP
-              until kubectl get ValidatingWebhookConfiguration istiod-istio-system-mcp
+              until kubectl get mutatingwebhookconfigurations istiod-asm-managed
               do
                 echo -n "...still waiting for ASM MCP webhook creation"
                 sleep $SLEEP
