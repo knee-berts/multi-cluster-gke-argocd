@@ -11,7 +11,7 @@ spec:
   template:
     spec:
       containers:
-        - image: registry.redhat.io/openshift4/ose-cli:v4.4
+        - image: bitnami/kubectl:1.24.3
           command:
             - /bin/bash
             - -c
