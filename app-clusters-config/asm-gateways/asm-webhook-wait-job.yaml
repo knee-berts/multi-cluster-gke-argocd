@@ -6,6 +6,7 @@ metadata:
     argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
   name: asm-webhook-wait-job
+  namespace: istio-system
 spec:
   template:
     spec:
