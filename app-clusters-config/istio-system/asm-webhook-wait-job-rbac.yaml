@@ -5,12 +5,11 @@ metadata:
   name: asm-webhook-wait-job-role
 rules:
   - apiGroups:
-      - admissionregistration.k8s.io/v1
+      - admissionregistration.k8s.io
     resources:
-      - ValidatingWebhookConfiguration
+      - ValidatingWebhookConfigurations
     verbs:
       - get
-      - list
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
