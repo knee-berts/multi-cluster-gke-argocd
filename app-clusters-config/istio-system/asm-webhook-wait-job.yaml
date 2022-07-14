@@ -1,37 +1,36 @@
-# apiVersion: batch/v1
-# kind: Job
-# metadata:
-#   annotations:
-#     argocd.argoproj.io/sync-wave: "0"
-#     argocd.argoproj.io/hook: PostSync
-#     argocd.argoproj.io/hook-delete-policy: HookSucceeded
-#   name: asm-webhook-wait-job
-#   # namespace: asm-gateways
-# spec:
-#   template:
-#     spec:
-#       containers:
-#         - image: bitnami/kubectl:1.24.3
-#           command:
-#             - /bin/bash
-#             - -c
-#             - |
-#               export HOME=/tmp/webhook-test
-#               echo ""
-#               echo -n "Waiting for the ASM MCP webhook to install."
-#               sleep $SLEEP
-#               until kubectl get ValidatingWebhookConfiguration istiod-istio-system-mcp
-#               do
-#                 echo -n "...still waiting for ASM MCP webhook creation"
-#                 sleep $SLEEP
-#               done
-#               echo "DONE"
-#           imagePullPolicy: Always
-#           name: asm-webhook-wait-job
-#           env:
-#           - name: SLEEP
-#             value: "5"
-#       dnsPolicy: ClusterFirst
-#       restartPolicy: OnFailure
-#       serviceAccountName: asm-webhook-wait-job-sa
-#       terminationGracePeriodSeconds: 30
+apiVersion: batch/v1
+kind: Job
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+  name: asm-webhook-wait-job
+spec:
+  template:
+    spec:
+      containers:
+        - image: bitnami/kubectl:1.24.3
+          command:
+            - /bin/bash
+            - -c
+            - |
+              export HOME=/tmp/webhook-test
+              echo ""
+              echo -n "Waiting for the ASM MCP webhook to install."
+              sleep $SLEEP
+              until kubectl get ValidatingWebhookConfiguration istiod-istio-system-mcp
+              do
+                echo -n "...still waiting for ASM MCP webhook creation"
+                sleep $SLEEP
+              done
+              echo "DONE"
+          imagePullPolicy: Always
+          name: asm-webhook-wait-job
+          env:
+          - name: SLEEP
+            value: "5"
+      dnsPolicy: ClusterFirst
+      restartPolicy: OnFailure
+      serviceAccountName: asm-webhook-wait-job-sa
+      terminationGracePeriodSeconds: 30

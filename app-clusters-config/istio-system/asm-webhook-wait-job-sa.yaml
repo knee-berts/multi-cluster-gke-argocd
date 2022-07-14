@@ -2,4 +2,3 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: asm-webhook-wait-job-sa
-  # namespace: asm-gateways
