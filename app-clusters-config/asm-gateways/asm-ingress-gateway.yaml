@@ -2,7 +2,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: asm-ingress-gateway-xlb
-  # namespace: asm-gateways
+  namespace: asm-gateways
 spec:
   selector:
     asm: ingressgateway-xlb # use ASM external ingress gateway

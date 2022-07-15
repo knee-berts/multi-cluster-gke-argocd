@@ -3,6 +3,8 @@ kind: ControlPlaneRevision
 metadata:
   name: asm-managed
   namespace: istio-system
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
 spec:
   type: managed_service
   channel: regular
