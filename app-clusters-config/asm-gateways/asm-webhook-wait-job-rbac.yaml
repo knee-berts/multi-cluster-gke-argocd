@@ -2,8 +2,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: asm-webhook-wait-job-role
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1"
+  # annotations:
+  #   argocd.argoproj.io/sync-wave: "-1"
 rules:
   - apiGroups:
       - admissionregistration.k8s.io
