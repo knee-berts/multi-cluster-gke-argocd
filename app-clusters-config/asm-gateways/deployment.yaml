@@ -4,7 +4,7 @@ metadata:
   name: asm-ingressgateway-xlb
   annotations:
     argocd.argoproj.io/sync-wave: "1"
-  namespace: asm-gateways
+  # namespace: asm-gateways
 spec:
   replicas: 3
   selector:

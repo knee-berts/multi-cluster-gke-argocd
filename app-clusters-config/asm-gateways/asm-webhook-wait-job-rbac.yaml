@@ -23,4 +23,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: asm-webhook-wait-job-sa
-    namespace: istio-system
+    namespace: asm-gateways
